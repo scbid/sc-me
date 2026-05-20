@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>News &amp; Updates, Saddle Creek Merchants United + Grammercy Park Collective</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script ></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked@9/marked.min.js"></script>
+</head>
+<body>
+
+  <nav class="nav pub-nav">
+        <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <span class="nav-logo-mark">⬡</span>
+        <span class="nav-logo-text">Saddle Creek Merchants United<br><em>+ Grammercy Park Collective</em></span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="about.html">About</a></li>
+        <li><a href="issues.html">Issues</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="take-action.html" class="urgent">Take Action</a></li>
+        <li><a href="https://drive.google.com/drive/folders/1y6J7BgRbqjNSq1TGpLfYI2tDJngiW1Zl?usp=share_link" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Members</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <!-- ── Sub-hero ── -->
+  <div class="sub-hero" id="pageHero">
+    <div class="container">
+      <span class="eyebrow">Stay Informed</span>
+      <h1>News &amp; Updates</h1>
+      <p>Statements, action alerts, and community news from the coalition.</p>
+    </div>
+  </div>
+
+  <!-- ── Content ── -->
+  <section class="section" style="background:var(--bg);">
+    <div class="container">
+
+      <!-- List view -->
+      <div id="listView">
+        <div class="news-filters" id="filters">
+          <button class="filter-btn active" data-cat="">All</button>
+          <button class="filter-btn" data-cat="News">News</button>
+          <button class="filter-btn" data-cat="Action Alert">Action Alert</button>
+          <button class="filter-btn" data-cat="Statement">Statement</button>
+          <button class="filter-btn" data-cat="Event">Event</button>
+        </div>
+        <div class="news-grid" id="newsGrid">
+          <div class="loading" style="grid-column:1/-1;">Loading news</div>
+        </div>
+      </div>
+
+      <!-- Single post view -->
+      <div id="postView" style="display:none; max-width:760px;">
+        <div class="news-post-back" id="backBtn">← Back to all news</div>
+        <div class="news-post-header" id="postHeader"></div>
+        <div class="news-post-body" id="postBody"></div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <div class="nav-logo" style="margin-bottom:.75rem;">
+            <span class="nav-logo-mark">⬡</span>
+            <span class="nav-logo-text">Saddle Creek Merchants United<br><em>+ Grammercy Park Collective</em></span>
+          </div>
+          <p>Standing together for Saddle Creek.</p>
+        </div>
+        <div class="footer-links">
+          <div class="footer-col">
+            <h4>Coalition</h4>
+            <ul>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="businesses.html">Businesses</a></li>
+              <li><a href="issues.html">Our Issues</a></li>
+              <li><a href="news.html">News</a></li>
+        <li><a href="take-action.html" style="color:var(--green);font-weight:600;">Take Action</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Members</h4>
+            <ul>
+              <li><a href="/login.html">Member Login</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span id="year"></span> Saddle Creek Merchants United &amp; Grammercy Park Collective.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById('navToggle').addEventListener('click', () =>
+      document.getElementById('navLinks').classList.toggle('open'));
+        ? window.location.href = '/members/'
+    });
+
+    const TAGS = { 'News': 'tag-news', 'Action Alert': 'tag-alert', 'Statement': 'tag-statement', 'Event': 'tag-event' };
+    let allPosts = [];
+    let activeFilter = '';
+
+    function slugify(title) {
+      return encodeURIComponent(title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''));
+    }
+
+    function formatDate(dateStr) {
+      return new Date(dateStr + 'T00:00:00')
+        .toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+    }
+
+    function renderList(posts) {
+      const grid = document.getElementById('newsGrid');
+      const filtered = activeFilter ? posts.filter(p => p.category === activeFilter) : posts;
+      if (!filtered.length) {
+        grid.innerHTML = `<p style="color:var(--text-muted);grid-column:1/-1;">No ${activeFilter ? activeFilter.toLowerCase() + ' ' : ''}posts yet.</p>`;
+        return;
+      }
+      grid.innerHTML = filtered.map(p => {
+        const tagClass = TAGS[p.category] || 'tag-news';
+        const slug = slugify(p.title);
+        return `
+          <div class="news-card" onclick="showPost('${slug}')">
+            <div class="news-card-top">
+              <div class="news-tag ${tagClass}">${p.category}</div>
+              <h3>${p.title}</h3>
+            </div>
+            <div class="news-card-body">
+              <div class="news-card-date">${formatDate(p.date)}${p.author ? ' · ' + p.author : ''}</div>
+              <p class="news-card-excerpt">${p.excerpt}</p>
+              <span class="news-card-link">Read more →</span>
+            </div>
+          </div>`;
+      }).join('');
+    }
+
+    function showPost(slug) {
+      const post = allPosts.find(p => slugify(p.title) === slug);
+      if (!post) return;
+
+      document.getElementById('listView').style.display = 'none';
+      document.getElementById('postView').style.display = 'block';
+
+      const tagClass = TAGS[post.category] || 'tag-news';
+      document.getElementById('postHeader').innerHTML = `
+        <h1>${post.title}</h1>
+        <div class="news-post-meta">
+          <span class="news-tag ${tagClass}">${post.category}</span>
+          <span>${formatDate(post.date)}</span>
+          ${post.author ? `<span>By ${post.author}</span>` : ''}
+        </div>`;
+
+      document.getElementById('postBody').innerHTML = marked.parse(post.body || '');
+
+      // Update hero
+      document.getElementById('pageHero').style.display = 'none';
+
+      // Update hash without triggering hashchange
+      history.pushState(null, '', '#' + slug);
+      window.scrollTo(0, 0);
+    }
+
+    function showList() {
+      document.getElementById('listView').style.display = 'block';
+      document.getElementById('postView').style.display = 'none';
+      document.getElementById('pageHero').style.display = '';
+      history.pushState(null, '', '/news.html');
+      window.scrollTo(0, 0);
+    }
+
+    document.getElementById('backBtn').addEventListener('click', showList);
+
+    // Filter buttons
+    document.getElementById('filters').addEventListener('click', e => {
+      const btn = e.target.closest('.filter-btn');
+      if (!btn) return;
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      activeFilter = btn.dataset.cat;
+      renderList(allPosts);
+    });
+
+    // Load posts then check hash
+    fetch('data/news.json')
+      .then(r => r.json())
+      .then(data => {
+        allPosts = (data.posts || []).sort((a, b) => new Date(b.date) - new Date(a.date));
+        renderList(allPosts);
+        const hash = window.location.hash.slice(1);
+        if (hash) showPost(hash);
+      })
+      .catch(() => {
+        document.getElementById('newsGrid').innerHTML =
+          '<p style="color:var(--text-muted);grid-column:1/-1;">Could not load news.</p>';
+      });
+
+    window.addEventListener('popstate', () => {
+      const hash = window.location.hash.slice(1);
+      hash ? showPost(hash) : showList();
+    });
+  </script>
+</body>
+</html>
