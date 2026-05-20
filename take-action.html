@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Take Action Now, Saddle Creek Merchants United</title>
+  <meta name="description" content="Three hearings. Seven businesses. Email Omaha city council and the mayor right now." />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .action-hero {
+      background: var(--green-xdk);
+      color: #fff;
+      padding: 3.5rem 1.75rem 3rem;
+      border-bottom: 3px solid var(--green-lt);
+    }
+    .action-hero .eyebrow { color: rgba(255,255,255,.4); }
+    .action-hero h1 { color: #fff; font-size: clamp(2rem, 5vw, 3.5rem); }
+    .action-hero p  { color: rgba(255,255,255,.65); margin-top: .5rem; font-size: 1rem; max-width: 56ch; }
+
+    .hearing-dates {
+      background: var(--green-pale);
+      border: 1.5px solid var(--border);
+      padding: 1.5rem 1.75rem;
+      margin-bottom: 2.5rem;
+    }
+    .hearing-dates h3 { font-size: 1rem; color: var(--ink); margin-bottom: 1rem; }
+    .hearing-row {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      padding: .65rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: .9rem;
+    }
+    .hearing-row:last-child { border-bottom: none; }
+    .hearing-date {
+      font-family: var(--font-d);
+      font-weight: 700;
+      color: var(--green-dk);
+      min-width: 110px;
+      font-size: 1rem;
+    }
+    .hearing-final {
+      background: var(--green);
+      color: #fff;
+      font-size: .65rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: .2rem .55rem;
+    }
+    .hearing-label { color: var(--text-muted); font-size: .85rem; }
+
+    .template-box {
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-left: 3px solid var(--green);
+      padding: 1.5rem 1.75rem;
+      margin-bottom: 2rem;
+    }
+    .template-box h3 { font-size: .95rem; margin-bottom: .75rem; color: var(--ink); }
+    .template-text {
+      font-size: .88rem;
+      color: var(--text-mid);
+      line-height: 1.75;
+      white-space: pre-line;
+    }
+    .template-note { font-size: .78rem; color: var(--text-muted); margin-top: .75rem; font-style: italic; }
+
+    .officials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1.5px solid var(--border);
+      margin-bottom: 2.5rem;
+    }
+    .official-card {
+      background: var(--white);
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: .35rem;
+    }
+    .official-card.priority { background: var(--green-xpale); border-left: 3px solid var(--green); }
+    .official-role { font-size: .62rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--green); }
+    .official-name { font-family: var(--font-d); font-size: 1rem; font-weight: 700; color: var(--ink); }
+    .official-district { font-size: .75rem; color: var(--text-muted); }
+    .official-actions { display: flex; gap: .5rem; margin-top: .5rem; flex-wrap: wrap; }
+    .btn-email {
+      display: inline-flex;
+      align-items: center;
+      gap: .35rem;
+      background: var(--green);
+      color: #fff;
+      padding: .42rem .9rem;
+      font-family: var(--font-b);
+      font-size: .75rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background .12s;
+    }
+    .btn-email:hover { background: var(--green-dk); }
+    .btn-phone {
+      display: inline-flex;
+      align-items: center;
+      gap: .35rem;
+      border: 1.5px solid var(--border);
+      color: var(--text-muted);
+      padding: .42rem .9rem;
+      font-family: var(--font-b);
+      font-size: .75rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all .12s;
+    }
+    .btn-phone:hover { border-color: var(--green); color: var(--green); }
+    .send-all-wrap { margin-bottom: 2.5rem; text-align: center; background: var(--green-xdk); padding: 2rem; }
+    .send-all-wrap p { color: rgba(255,255,255,.65); font-size: .88rem; margin: .5rem auto 1.25rem; max-width: 44ch; }
+    .send-all-wrap h3 { color: #fff; font-size: 1.2rem; }
+    .btn-send-all {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      background: #fff;
+      color: var(--green-dk);
+      padding: .85rem 2rem;
+      font-family: var(--font-b);
+      font-size: .9rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: background .12s;
+    }
+    .btn-send-all:hover { background: var(--bg); }
+
+    @media (max-width: 750px) {
+      .officials-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 480px) {
+      .officials-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav pub-nav">
+        <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <span class="nav-logo-mark">⬡</span>
+        <span class="nav-logo-text">Saddle Creek Merchants United</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="about.html">About</a></li>
+        <li><a href="issues.html">Issues</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="take-action.html" class="urgent">Take Action</a></li>
+        <li><a href="https://drive.google.com/drive/folders/1y6J7BgRbqjNSq1TGpLfYI2tDJngiW1Zl?usp=share_link" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Members</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <div class="action-hero">
+    <div class="container">
+      <span class="eyebrow">Urgent Action Needed</span>
+      <h1>Saddle Creek runs deep.<br>We will not pay for our own displacement.</h1>
+      <p>A development proposal would demolish seven immigrant-owned Saddle Creek businesses for market-rate apartments. The final public hearing is June 2. We need emails to city council and the mayor before then.</p>
+    </div>
+  </div>
+
+  <section class="section" style="background:var(--bg);">
+    <div class="container">
+
+      <!-- Hearing dates -->
+      <div class="hearing-dates">
+        <h3>Hearing Schedule</h3>
+        <div class="hearing-row">
+          <span class="hearing-date">May 19, 2026</span>
+          <span class="hearing-label">First public hearing, Omaha City Council, 2:00 PM</span>
+        </div>
+        <div class="hearing-row">
+          <span class="hearing-date">May 27, 2026</span>
+          <span class="hearing-label">Second public hearing, Omaha City Council, 2:00 PM</span>
+        </div>
+        <div class="hearing-row">
+          <span class="hearing-date">June 2, 2026</span>
+          <span class="hearing-final">Final hearing</span>
+          <span class="hearing-label">Final public hearing, Omaha City Council, 2:00 PM. Last chance for public testimony.</span>
+        </div>
+        <p style="font-size:.78rem;color:var(--text-muted);margin-top:.85rem;">All hearings at Omaha City Council Chambers, Omaha-Douglas Civic Center, 1819 Farnam Street.</p>
+      </div>
+
+      <!-- Email template -->
+      <h2 style="margin-bottom:1rem;">What to say</h2>
+      <p style="margin-bottom:1.25rem;font-size:.9rem;">Copy and personalize this message. Adding your own words makes a real difference.</p>
+
+      <div class="template-box">
+        <h3>Sample email</h3>
+        <div class="template-text">Subject: Please oppose the demolition of Saddle Creek immigrant-owned businesses
+
+I am writing to urge you to oppose the development proposal that would demolish seven immigrant-owned businesses on the Saddle Creek corridor in favor of market-rate apartments.
+
+These are functioning, community-rooted businesses that were not meaningfully consulted and were not offered real alternatives. Demolishing them does not serve the neighborhood. It serves the interests of a developer at the expense of the people who have actually built this community.
+
+Saddle Creek does not need more market-rate apartments built on the graves of working businesses. It needs investment that supports what is already here.
+
+I am asking you to vote NO on this proposal and to require a genuine community benefits process before any similar development moves forward.
+
+Thank you.
+
+[Your name]
+[Your address or neighborhood]</div>
+        <p class="template-note">Tip: The more specific and personal your email, the more weight it carries. If you know any of the businesses affected, mention them by name.</p>
+      </div>
+
+      <!-- Send to all -->
+      <div class="send-all-wrap">
+        <h3>Email everyone at once</h3>
+        <p>This link opens a pre-addressed email to all seven council members and the mayor's hotline simultaneously.</p>
+        <a class="btn-send-all" href="mailto:Pete.Festersen@cityofomaha.org,LaVonya.Goodwin@cityofomaha.org,Danny.Begley@cityofomaha.org,Ron.Hug@cityofomaha.org,Don.Rowe@cityofomaha.org,Brinker.Harding@cityofomaha.org,Aimee.Melton@cityofomaha.org,hotline@cityofomaha.org?subject=Please%20oppose%20the%20demolition%20of%20Saddle%20Creek%20immigrant-owned%20businesses&body=I%20am%20writing%20to%20urge%20you%20to%20oppose%20the%20development%20proposal%20that%20would%20demolish%20seven%20immigrant-owned%20businesses%20on%20the%20Saddle%20Creek%20corridor%20in%20favor%20of%20market-rate%20apartments.%0A%0AThese%20are%20functioning%2C%20community-rooted%20businesses%20that%20were%20not%20meaningfully%20consulted%20and%20were%20not%20offered%20real%20alternatives.%20Demolishing%20them%20does%20not%20serve%20the%20neighborhood.%20It%20serves%20the%20interests%20of%20a%20developer%20at%20the%20expense%20of%20the%20people%20who%20have%20actually%20built%20this%20community.%0A%0ASaddle%20Creek%20does%20not%20need%20more%20market-rate%20apartments%20built%20on%20the%20graves%20of%20working%20businesses.%20It%20needs%20investment%20that%20supports%20what%20is%20already%20here.%0A%0AI%20am%20asking%20you%20to%20vote%20NO%20on%20this%20proposal%20and%20to%20require%20a%20genuine%20community%20benefits%20process%20before%20any%20similar%20development%20moves%20forward.%0A%0AThank%20you.%0A%0A[Your%20name]%0A[Your%20address%20or%20neighborhood]">
+          ✉ Email All Council Members + Mayor Now
+        </a>
+      </div>
+
+
+      <!-- Petition -->
+      <div style="background:var(--green-xpale);border:1.5px solid var(--border);border-left:4px solid var(--green);padding:2rem;margin-bottom:2.5rem;">
+        <span class="eyebrow">Sign the Petition</span>
+        <h2 style="font-size:1.4rem;margin-bottom:.6rem;">Add your name</h2>
+        <p style="margin-bottom:1.25rem;">Signing takes 60 seconds. Every name matters. After signing, please also email city council directly using the button above, a direct email carries more weight than a petition signature alone.</p>
+        <a href="https://forms.gle/d19DF8uMJpdXBHMc8" target="_blank" rel="noopener" class="btn btn-primary" style="font-size:.9rem;padding:.75rem 1.75rem;">Sign the Petition &rarr;</a>
+      </div>
+
+      <!-- Individual contacts -->
+      <h2 style="margin-bottom:.5rem;">Contact them individually</h2>
+      <p style="margin-bottom:1.5rem;font-size:.88rem;">Your own district rep and the council president carry the most weight. But emailing all of them matters.</p>
+
+      <div class="officials-grid">
+        <div class="official-card priority">
+          <span class="official-role">Council President</span>
+          <span class="official-name">Danny Begley</span>
+          <span class="official-district">District 3</span>
+          <div class="official-actions">
+            <a class="btn-email" href="mailto:Danny.Begley@cityofomaha.org?subject=Please%20oppose%20the%20demolition%20of%20Saddle%20Creek%20immigrant-owned%20businesses">✉ Email</a>
+            <a class="btn-phone" href="tel:4024445525">402-444-5525</a>
+          </div>
+        </div>
+        <div class="official-card priority">
+          <span class="official-role">Introduced Ordinances</span>
+          <span class="official-name">Pete Festersen</span>
+          <span class="official-district">District 1</span>
+          <div class="official-actions">
+            <a class="btn-email" href="mailto:Pete.Festersen@cityofomaha.org?subject=Please%20oppose%20the%20demolition%20of%20Saddle%20Creek%20immigrant-owned%20businesses">✉ Email</a>
+            <a class="btn-phone" href="tel:4024445527">402-444-5527</a>
+          </div>
+        </div>
+        <div class="official-card priority">
+          <span class="official-role">Mayor of Omaha</span>
+          <span class="official-name">Mayor John Ewing Jr.</span>
+          <span class="official-district">Mayor's Hotline</span>
+          <div class="official-actions">
+            <a class="btn-email" href="mailto:hotline@cityofomaha.org?subject=Please%20oppose%20the%20demolition%20of%20Saddle%20Creek%20immigrant-owned%20businesses">✉ Email</a>
+            <a class="btn-phone" href="tel:4024445555">402-444-5555</a>
+          </div>
+        </div>
+        <div class="official-card">
+          <span class="official-role">District 2</span>
+          <span class="official-name">LaVonya Goodwin</span>
+          <div class="official-actions">
+            <a class="btn-email" href="mailto:LaVonya.Goodwin@cityofomaha.org?subject=Please%20oppose%20the%20demolition%20of%20Saddle%20Creek%20immigrant-owned%20businesses">✉ Email</a>
+            <a class="btn-phone" href="tel:4024445524">402-444-5524</a>
+          </div>
+        </div>
+        <div class="official-card">
+          <span class="official-role">District 4</span>
+          <span class="official-name">Ron Hug</span>
+          <div class="official-actions">
+            <a class="btn-email" href="mailto:Ron.Hug@cityofomaha.org?subject=Please%20oppose%20the%20demolition%20of%20Saddle%20Creek%20immigrant-owned%20businesses">✉ Email</a>
+            <a class="btn-phone" href="tel:4024445522">402-444-5522</a>
+          </div>
+        </div>
+        <div class="official-card">
+          <span class="official-role">District 5</span>
+          <span class="official-name">Don Rowe</span>
+          <div class="official-actions">
+            <a class="btn-email" href="mailto:Don.Rowe@cityofomaha.org?subject=Please%20oppose%20the%20demolition%20of%20Saddle%20Creek%20immigrant-owned%20businesses">✉ Email</a>
+            <a class="btn-phone" href="tel:4024445528">402-444-5528</a>
+          </div>
+        </div>
+        <div class="official-card">
+          <span class="official-role">District 6, Vice President</span>
+          <span class="official-name">Brinker Harding</span>
+          <div class="official-actions">
+            <a class="btn-email" href="mailto:Brinker.Harding@cityofomaha.org?subject=Please%20oppose%20the%20demolition%20of%20Saddle%20Creek%20immigrant-owned%20businesses">✉ Email</a>
+            <a class="btn-phone" href="tel:4024445523">402-444-5523</a>
+          </div>
+        </div>
+        <div class="official-card">
+          <span class="official-role">District 7</span>
+          <span class="official-name">Aimee Melton</span>
+          <div class="official-actions">
+            <a class="btn-email" href="mailto:Aimee.Melton@cityofomaha.org?subject=Please%20oppose%20the%20demolition%20of%20Saddle%20Creek%20immigrant-owned%20businesses">✉ Email</a>
+            <a class="btn-phone" href="tel:4024445526">402-444-5526</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Attend in person -->
+      <div class="hearing-dates" style="margin-bottom:0;">
+        <h3>Attend in person</h3>
+        <p style="font-size:.88rem;color:var(--text-muted);margin-bottom:.85rem;">Your physical presence matters, even if you don't testify. Show up.</p>
+        <p style="font-size:.88rem;color:var(--text-mid);"><strong>Omaha City Council Chambers</strong><br>Omaha-Douglas Civic Center<br>1819 Farnam Street, Omaha, NE 68183<br>Meetings begin at 2:00 PM. Arrive by 1:30 to sign up for public testimony.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="cta-band">
+    <div class="container">
+      <h2>Share this page.</h2>
+      <p>The more people who email, the harder it is to ignore. Send this to everyone you know in Omaha.</p>
+      <a href="mailto:?subject=Seven%20Saddle%20Creek%20businesses%20need%20your%20help&body=A%20development%20proposal%20would%20demolish%20seven%20immigrant-owned%20businesses%20in%20Saddle%20Creek%20for%20market-rate%20apartments.%20The%20final%20hearing%20is%20June%202.%20Please%20email%20city%20council%20now%3A%20[YOUR-DOMAIN]/take-action.html" class="btn-cta">Share by Email</a>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <div class="nav-logo">
+            <span class="nav-logo-mark">⬡</span>
+            <span class="nav-logo-text">Saddle Creek Merchants United</span>
+          </div>
+          <p>Standing together for Saddle Creek.</p>
+        </div>
+        <div class="footer-links">
+          <div class="footer-col">
+            <h4>Coalition</h4>
+            <ul>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="businesses.html">Businesses</a></li>
+              <li><a href="issues.html">Our Issues</a></li>
+              <li><a href="news.html">News</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Take Action</h4>
+            <ul>
+              <li><a href="take-action.html">Email City Council</a></li>
+              <li><a href="mailto:saddlecreekbid@gmail.com">Contact Us</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span id="year"></span> Saddle Creek Merchants United, in partnership with Grammercy Park Collective.</span>
+        <span>A community coalition for Saddle Creek.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById('navToggle').addEventListener('click', () =>
+      document.getElementById('navLinks').classList.toggle('open'));
+        ? window.location.href = '/members/'
+    });
+  </script>
+
+</body>
+</html>
