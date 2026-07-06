@@ -3,149 +3,133 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Saddle Creek Merchants United</title>
-  <meta name="description" content="Two organizations united against unaccountable development and a Business Improvement District that serves no one but its creator.">
-  <link rel="stylesheet" href="css/style.css">
+  <title>Saddle Creek Neighbors</title>
+  <meta name="description" content="A community coalition for Saddle Creek.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'DM Sans', system-ui, sans-serif;
+      color: #1A1F1C;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background-color: #F0F6F2;
+      background-image: repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 18px,
+        rgba(30, 122, 82, 0.07) 18px,
+        rgba(30, 122, 82, 0.07) 19px
+      );
+    }
+    .wrap {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 64px 24px;
+      text-align: center;
+    }
+    .card {
+      background: #F0F6F2;
+      border: 1px solid #C8DDD3;
+      border-radius: 6px;
+      padding: 52px 48px 48px;
+      max-width: 420px;
+      width: 100%;
+    }
+    .mark {
+      font-size: 26px;
+      margin-bottom: 22px;
+      color: #1E7A52;
+    }
+    .name {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(1.4rem, 3.5vw, 2rem);
+      font-weight: 700;
+      color: #134D32;
+      letter-spacing: -0.01em;
+      margin-bottom: 8px;
+    }
+    .sub {
+      font-family: Helvetica, Arial, sans-serif;
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #607068;
+      margin-bottom: 24px;
+    }
+    .rule {
+      width: 40px;
+      height: 1.5px;
+      background: #C8DDD3;
+      margin: 0 auto 24px;
+    }
+    .body {
+      font-size: 15px;
+      line-height: 1.75;
+      color: #3D4D45;
+      margin-bottom: 32px;
+    }
+    .links {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      padding: 9px 20px;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: background 0.15s, border-color 0.15s;
+    }
+    .btn-primary {
+      background: #1E7A52;
+      color: #fff;
+      border: 1.5px solid #1E7A52;
+    }
+    .btn-primary:hover { background: #134D32; border-color: #134D32; }
+    .btn-outline {
+      background: transparent;
+      color: #1E7A52;
+      border: 1.5px solid #C8DDD3;
+    }
+    .btn-outline:hover { border-color: #1E7A52; }
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-family: Helvetica, Arial, sans-serif;
+      font-size: 11px;
+      color: #607068;
+    }
+  </style>
 </head>
 <body>
 
-  <div class="urgency-bar">
-    <span class="tag">⚡ Action needed</span>
-    <p>Hearings May 21 and June 2. Seven businesses face demolition. Mayor Ewing can veto. <a href="take-action.html">Act now.</a></p>
-  </div>
-  <nav class="nav">
-    <div class="nav-inner">
-      <a href="index.html" class="nav-logo">
-        <span class="nav-logo-mark">⬡</span>
-        <span class="nav-logo-text">Saddle Creek Merchants United</span>
-      </a>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="about.html">About</a></li>
-        <li><a href="issues.html">Issues</a></li>
-        <li><a href="news.html">News</a></li>
-        <li><a href="take-action.html" class="urgent">Take Action</a></li>
-        <li><a href="https://drive.google.com/drive/folders/1y6J7BgRbqjNSq1TGpLfYI2tDJngiW1Zl?usp=share_link" target="_blank" rel="noopener" class="btn btn-dark btn-sm">Members</a></li>
-      </ul>
-      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </nav>
-
-  <!-- Hero -->
-  <div class="hero">
-    <div class="hero-inner">
-      <span class="hero-tag">&#10022; Saddle Creek Merchants United</span>
-      <div class="hero-rule"></div>
-      <h1>Saddle Creek<br><em>needs you now.</em></h1>
-      <div class="hero-rule"></div>
-      <div class="hero-grid">
-        <p class="hero-sub">Saddle Creek Merchants United is fighting an unaccountable Business Improvement District run by an outside developer, and a $110 million luxury apartment proposal that would demolish seven businesses using $21 million in public subsidies with no community input.</p>
-        <div class="hero-btns">
-          <a href="take-action.html" class="btn btn-primary">Take Action Now</a>
-          <a href="issues.html"      class="btn btn-outline">What We're Fighting For</a>
-          <a href="about.html"       class="btn btn-outline">About Our Coalition</a>
-        </div>
+  <div class="wrap">
+    <div class="card">
+      <div class="mark">⬡</div>
+      <div class="name">Saddle Creek Neighbors</div>
+      <div class="sub">Saddle Creek &middot; Omaha</div>
+      <div class="rule"></div>
+      <p class="body">This site is being updated. Reach us directly in the meantime.</p>
+      <div class="links">
+        <a href="https://drive.google.com/drive/folders/1y6J7BgRbqjNSq1TGpLfYI2tDJngiW1Zl?usp=share_link" class="btn btn-primary" target="_blank" rel="noopener">Members area</a>
+        <a href="mailto:saddlecreekbid@gmail.com" class="btn btn-outline">Contact us</a>
       </div>
     </div>
   </div>
 
-  <!-- Partnership -->
-  <section class="section partnership-section">
-    <div class="container">
-      <div style="margin-bottom:2.25rem;">
-        <span class="eyebrow">Our Coalition</span>
-        <h2>Two organizations. One community.</h2>
-        <p style="max-width:52ch;">When merchants and residents stand together, we speak with one voice, and that voice is harder to ignore.</p>
-      </div>
-      <div class="grid-2">
-        <div class="partner-card">
-          <span class="eyebrow">For Merchants</span>
-          <h3>Saddle Creek Merchants United</h3>
-          <p>We are the independent businesses of Saddle Creek, many family-owned for generations. We are required to fund the N. Saddle Creek BID through mandatory assessments and have seen nothing in return except disruption, closed streets, and zero transparency.</p>
-        </div>
-        <div class="partner-card">
-          <span class="eyebrow">For the Community</span>
-          <h3>Grammercy Park Collective</h3>
-          <p>A community group standing in solidarity. Grammercy Park Collective supports this effort because neighbors had no other avenue to oppose decisions being made without them.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+  <footer>&copy; <span id="yr"></span> Saddle Creek Neighbors</footer>
+  <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
 
-  <!-- At stake -->
-  <section class="section at-stake-section">
-    <div class="container">
-      <span class="eyebrow">The Situation</span>
-      <h2>Closing in from both ends</h2>
-      <p style="max-width:60ch;">Two separate developers. Two separate projects. One community caught in the middle, being taxed for its own displacement.</p>
-      <div class="stake-grid">
-        <div class="stake-card">
-          <span class="stake-card-num">01</span>
-          <h3>The N. Saddle Creek BID</h3>
-          <p>An unaccountable Business Improvement District run by a developer from Bennington. Local businesses pay mandatory assessments with no transparency, no community voice, and no accountability.</p>
-        </div>
-        <div class="stake-card">
-          <span class="stake-card-num">02</span>
-          <h3>The Family Fare Project</h3>
-          <p>Developer Mitch Hohlen is seeking $21 million in public subsidies (TIF + EEA) to demolish seven businesses at Saddle Creek Plaza for luxury apartments. No affordable housing. Final hearing June 2.</p>
-        </div>
-        <div class="stake-card">
-          <span class="stake-card-num">03</span>
-          <h3>Taxed for Our Own Displacement</h3>
-          <p>Both projects use public tax incentives to subsidize development that destroys what already exists here. The community bears the cost. The developers capture the gain. This is not development. It is extraction.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-   <!-- CTA -->
-  <div class="cta-band">
-    <div class="container">
-      <h2>May 21 and June 2. Mayor Ewing can veto.</h2>
-      <p>Email every council member and the mayor. Sign the petition. Show up on May 21 and June 2. This affects all of us.</p>
-      <div class="cta-band-btns">
-        <a href="take-action.html"          class="btn btn-white">Email City Council</a>
-        <a href="https://forms.gle/d19DF8uMJpdXBHMc8" target="_blank" rel="noopener" class="btn btn-dark">Sign the Petition</a>
-      </div>
-    </div>
-  </div>
-
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-inner">
-        <div>
-          <div class="footer-logo">Saddle Creek Merchants United</div>
-          <p class="footer-tagline">Standing together for Saddle Creek.</p>
-        </div>
-        <div class="footer-links">
-          <div class="footer-col">
-            <h4>Site</h4>
-            <ul>
-              <li><a href="about.html">About</a></li>
-              <li><a href="issues.html">Issues</a></li>
-              <li><a href="news.html">News</a></li>
-              <li><a href="take-action.html">Take Action</a></li>
-            </ul>
-          </div>
-          <div class="footer-col">
-            <h4>Contact</h4>
-            <ul>
-              <li><a href="mailto:saddlecreekbid@gmail.com">Email</a></li>
-              <li><a href="https://drive.google.com/drive/folders/1y6J7BgRbqjNSq1TGpLfYI2tDJngiW1Zl?usp=share_link" target="_blank" rel="noopener">Member Drive</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <span>&copy; <span class="js-year"></span> Saddle Creek Merchants United, in partnership with Grammercy Park Collective.</span>
-        <span>A community coalition for Saddle Creek.</span>
-      </div>
-    </div>
-  </footer>
-  <script src="js/site.js"></script>
-
-  <script src="https://cdn.jsdelivr.net/npm/marked@9/marked.min.js"></script>
-  <script src="js/news.js"></script>
 </body>
 </html>
